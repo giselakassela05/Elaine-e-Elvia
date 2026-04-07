@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  background: black;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.convite, .form-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.imagem {
+  width: 100%;
+}
+
+/* animação */
+.entrada {
+  animation: zoomFade 1s ease;
+}
+
+@keyframes zoomFade {
+  from {
+    opacity: 0;
+    transform: translateY(-40%) scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* hotspots invisíveis */
+.hotspot {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mapa {
+  bottom: 13.5%;
+  left: 23%;
+}
+
+.confirmar {
+  bottom: 13.5%;
+  right: 22%;
+}
+
+.hotspot:hover {
+  background: rgb(205 216 218 / 35%);
+}
+
+/* form */
+.form-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background: rgba(10, 20, 40, 0.75);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  width: 80%;
+  max-width: 300px;
+}
+
+.form-box input {
+  width: 90%;
+  padding: 12px;
+  margin: 20px 0 1;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+}
+
+.form-box button {
+  width: 80%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #3fa9f5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

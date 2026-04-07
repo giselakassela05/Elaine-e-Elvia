@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Convite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TELA 1 -->
+<div id="home" class="screen active">
+  <div class="convite entrada">
+    <img src="convite.jpg" class="imagem">
+
+    <button class="hotspot mapa" onclick="openMap()"></button>
+    <button class="hotspot confirmar" onclick="goToForm()"></button>
+  </div>
+</div>
+
+<!-- TELA 2 -->
+<div id="form" class="screen">
+  <div class="form-container">
+    <img src="fundo.jpg" class="imagem">
+
+    <div class="form-box" id="formBox">
+      <h2>Confirme sua presença</h2>
+
+      <input type="text" id="nome" placeholder="Seu nome completo">
+
+      <button onclick="confirmar()">Confirmar presença</button>
+    </div>
+  </div>
+</div>
+
+<!-- 🔥 IMPORTANTE -->
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
