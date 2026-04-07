@@ -28,6 +28,13 @@ body {
   transform: translateY(-50%);
 }
 
+/* ajuste só para celular */
+@media (max-width: 600px) {
+  .convite, .form-container {
+    max-width: 95%;
+  }
+}
+
 .imagem {
   width: 100%;
 }
