@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Confirmados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #contador {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #00ffcc;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    li {
+      background: #161b22;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 4px solid #00ffcc;
+      transition: 0.2s;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+      background: #1f2630;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Lista de Confirmados</h1>
+<div id="contador">Carregando...</div>
+
+<ul id="lista"></ul>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, onSnapshot } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBAuPkt23z410tJa5R3OTxKkFYqze5yYM4",
+  authDomain: "elaine-e-elvia-1515.firebaseapp.com",
+  projectId: "elaine-e-elvia-1515",
+  storageBucket: "elaine-e-elvia-1515.firebasestorage.app",
+  messagingSenderId: "595280795588",
+  appId: "1:595280795588:web:548ca5e0f4fbe8bb96b691"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// ELEMENTOS
+const lista = document.getElementById("lista");
+const contador = document.getElementById("contador");
+
+// TEMPO REAL
+onSnapshot(collection(db, "confirmacoes"), (snapshot) => {
+
+  lista.innerHTML = "";
+
+  let total = 0;
+
+  snapshot.forEach(doc => {
+    const nome = doc.data().nome;
+
+    const item = document.createElement("li");
+    item.textContent = nome;
+
+    lista.appendChild(item);
+    total++;
+  });
+
+  contador.textContent = `Total de confirmados: ${total}`;
+});
+
+</script>
+
+</body>
+</html>
